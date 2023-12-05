@@ -1,3 +1,3 @@
 class GatePermission < ApplicationRecord
-  has_one :gate
+  belongs_to :gate
 end

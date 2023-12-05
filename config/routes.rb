@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   resources :dashboards
   resources :users
   resources :gates
-  resources :roles
+  resources :roles do 
+    post :add_gate
+    post :remove_gate
+  end
   resources :sessions do 
     collection do 
       get :logout
