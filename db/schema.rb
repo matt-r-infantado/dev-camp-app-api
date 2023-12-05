@@ -32,6 +32,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_05_053415) do
 
   create_table "gates", force: :cascade do |t|
     t.string "serial_number"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
