@@ -5,8 +5,8 @@
         <div class="col-lg-3 col-6">
             <div class="small-box bg-info">
             <div class="inner">
-                <h3>123</h3>
-                <p>Total Members</p>
+                <h3><%=User.count%></h3>
+                <p>Total Users</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
@@ -18,8 +18,8 @@
         <div class="col-lg-3 col-6">
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>123</h3>
-                    <p>Total Admin</p>
+                    <h3><%=Gate.count%></h3>
+                    <p>Total Gates</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -32,8 +32,8 @@
 
             <div class="small-box bg-warning">
                 <div class="inner">
-                    <h3>0</h3>
-                    <p>For Review</p>
+                    <h3><%=Role.count%></h3>
+                    <p>Total Roles</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
@@ -46,7 +46,7 @@
             <div class="small-box bg-danger">
                 <div class="inner">
                     <h3>0</h3>
-                    <p>Loan Application</p>
+                    <p>Logs</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>

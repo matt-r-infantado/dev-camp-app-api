@@ -24,6 +24,9 @@ class RolesController < ApplicationController
   end
 
   def create 
+    p "+=="
+    p role_params
+    p "+=="
     Role.create role_params
     redirect_to roles_path
   end
