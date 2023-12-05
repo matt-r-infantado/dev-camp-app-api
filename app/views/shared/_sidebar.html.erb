@@ -1,0 +1,36 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <%=link_to root_path, class:'brand-link' do %>
+    <%= image_tag('logo.png', alt: 'Logo', size: '50') %>
+    <span class="brand-text font-weight-light">Admin</span>
+  <% end %>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar nav-child-indent flex-column" data-widget="treeview" role="menu" data-accordion="true">        
+        <li class="nav-item has-treeview">
+          <%=link_to users_path, class:(controller_name == 'users' ? 'nav-link active' : 'nav-link' ) do %>
+            <i class="nav-icon fas fa-building"></i>
+            <p>
+              Users
+              <i class="right fas fa-angle-right"></i>
+            </p>
+          <% end %> 
+        </li>
+        <li class="nav-item has-treeview">
+          <%=link_to gates_path, class:(controller_name == 'gates' ? 'nav-link active' : 'nav-link' ) do %>
+            <i class="nav-icon fas fa-building"></i>
+            <p>
+              Gates
+              <i class="right fas fa-angle-right"></i>
+            </p>
+          <% end %> 
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>
