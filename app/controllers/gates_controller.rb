@@ -1,4 +1,6 @@
 class GatesController < ApplicationController
+  before_action :must_be_authenticated
+  
   def index 
     @gates = Gate.all
   end

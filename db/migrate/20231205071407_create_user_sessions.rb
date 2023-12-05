@@ -1,6 +1,6 @@
-class CreateAuthTokens < ActiveRecord::Migration[7.1]
+class CreateUserSessions < ActiveRecord::Migration[7.1]
   def change
-    create_table :auth_tokens do |t|
+    create_table :user_sessions do |t|
       t.string :token
       t.references :user, foreign_key: { to_table: :users }
       t.datetime :valid_at

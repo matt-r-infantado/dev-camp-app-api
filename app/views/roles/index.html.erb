@@ -1,0 +1,52 @@
+<%= render 'shared/header'%>
+<%= render 'shared/sidebar'%>
+<div class="content-wrapper">
+    <section class="content-header">    
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-sm-6">
+                  <h3>Roles</h3>
+              </div>
+              <div class="col-sm-6">
+                  <ol class="breadcrumb float-sm-right">
+                      <li class="breadcrumb-item"><%=link_to :Dashboard, root_path%></li>
+                      <li class="breadcrumb-item active">Roles</li>
+                  </ol>
+              </div>
+          </div>
+      </div>
+    </section>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header text-right">
+                  <%= link_to new_role_path do %>
+                    <button class="btn btn-primary btn-sm">Add Role</button>
+                  <% end %>
+                </div>
+                <div class="card-body p-0">
+                  <table class="table table-bordered">
+                    <thead>
+                      <th>ID</th>
+                      <th>ID</th>
+                      <th>ID</th>
+                    </thead>
+                    <tbody>
+                      <% @roles.each do |role|%>
+                        <tr>
+                          <td><%=role.id%></td>
+                          <td><%=role.name%></td>
+                          <td><%=role.is_active%></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+</div>

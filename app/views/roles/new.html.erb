@@ -5,12 +5,12 @@
       <div class="container-fluid">
           <div class="row">
               <div class="col-sm-6">
-                  <h3>Add Gate</h3>
+                  <h3>New Role</h3>
               </div>
               <div class="col-sm-6">
                   <ol class="breadcrumb float-sm-right">
                       <li class="breadcrumb-item"><%=link_to :Dashboard, root_path%></li>
-                      <li class="breadcrumb-item active"><%=link_to :Gates, gates_path%></li>
+                      <li class="breadcrumb-item active"><%=link_to :Roles, roles_path%></li>
                       <li class="breadcrumb-item active">New</li>
                   </ol>
               </div>
@@ -23,7 +23,7 @@
             <div class="col-6">
               <div class="card">
                 <div class="card-body">
-                  <%=form_tag (gates_path) do %>
+                  <%=form_tag (roles_path) do %>
                     <div class="form-outline mb-4">
                         <label class="form-label" for="form2Example1">Name</label>
                         <%=text_field_tag :name, params[:name], class:'form-control', type:'text'%>
