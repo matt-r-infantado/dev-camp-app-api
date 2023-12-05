@@ -1,0 +1,39 @@
+<%= render 'shared/header'%>
+<%= render 'shared/sidebar'%>
+<div class="content-wrapper">
+    <section class="content-header">    
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-sm-6">
+                  <h3>Add Gates</h3>
+              </div>
+              <div class="col-sm-6">
+                  <ol class="breadcrumb float-sm-right">
+                      <li class="breadcrumb-item"><%=link_to :Dashboard, root_path%></li>
+                      <li class="breadcrumb-item active"><%=link_to :Gates, gates_path%></li>
+                      <li class="breadcrumb-item active">New</li>
+                  </ol>
+              </div>
+          </div>
+      </div>
+    </section>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+              <div class="card">
+                <div class="card-body">
+                  <%=form_tag (gates_path) do %>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="form2Example1">Name</label>
+                        <%=text_field_tag :name, params[:name], class:'form-control', type:'text'%>
+                    </div>
+                    <%= submit_tag("Create", :class=>"btn btn-primary btn-block mb-4", :name=>"submit") %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+</div>

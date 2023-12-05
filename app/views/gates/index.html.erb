@@ -1,46 +1,52 @@
 <%= render 'shared/header'%>
 <%= render 'shared/sidebar'%>
-<div class="content-wrapper p-3">
+<div class="content-wrapper">
     <section class="content-header">    
       <div class="container-fluid">
           <div class="row">
               <div class="col-sm-6">
-                  <h3>Members</h3>
+                  <h3>Add Gates</h3>
               </div>
               <div class="col-sm-6">
                   <ol class="breadcrumb float-sm-right">
                       <li class="breadcrumb-item"><%=link_to :Dashboard, root_path%></li>
-                      <li class="breadcrumb-item active">Users</li>
+                      <li class="breadcrumb-item active">Gates</li>
                   </ol>
               </div>
           </div>
       </div>
     </section>
-    <div class="row">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-header text-right">
-              <button class="btn btn-primary btn-sm">Add Device</button>
-            </div>
-            <div class="card-body p-0">
-              <table class="table table-bordered">
-                <thead>
-                  <th>ID</th>
-                  <th>ID</th>
-                  <th>ID</th>
-                </thead>
-                <tbody>
-                  <% 6.times do%>
-                    <tr>
-                      <td>asd</td>
-                      <td>asd</td>
-                      <td>asd</td>
-                    </tr>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header text-right">
+                  <%= link_to new_gate_path do %>
+                    <button class="btn btn-primary btn-sm">Add Gates</button>
                   <% end %>
-                </tbody>
-              </table>
+                </div>
+                <div class="card-body p-0">
+                  <table class="table table-bordered">
+                    <thead>
+                      <th>ID</th>
+                      <th>ID</th>
+                      <th>ID</th>
+                    </thead>
+                    <tbody>
+                      <% @gates.each do |gate|%>
+                        <tr>
+                          <td><%=gate.id%></td>
+                          <td><%=gate.name%></td>
+                          <td><%=gate.serial_number%></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
-          </div>
         </div>
-    </div>
+      </div>
+    </section>
 </div>
