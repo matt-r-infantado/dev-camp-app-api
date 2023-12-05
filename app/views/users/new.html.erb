@@ -1,0 +1,51 @@
+<%= render 'shared/header'%>
+<%= render 'shared/sidebar'%>
+<div class="content-wrapper">
+    <section class="content-header">    
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-sm-6">
+                  <h3>Add User</h3>
+              </div>
+              <div class="col-sm-6">
+                  <ol class="breadcrumb float-sm-right">
+                      <li class="breadcrumb-item"><%=link_to :Dashboard, root_path%></li>
+                      <li class="breadcrumb-item active"><%=link_to :Users, users_path%></li>
+                      <li class="breadcrumb-item active">New</li>
+                  </ol>
+              </div>
+          </div>
+      </div>
+    </section>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <%=form_tag (users_path) do %>
+                    <div class="form-outline mb-4 col-3">
+                        <label class="form-label mt-3" for="first_name">First Name</label>
+                        <%=text_field_tag :first_name, params[:first_name], class:'form-control', type:'text'%>
+                        <label class="form-label mt-3" for="last_name">Last Name</label>
+                        <%=text_field_tag :last_name, params[:last_name], class:'form-control', type:'text'%>
+                         <label class="form-label mt-3" for="email">Email</label>
+                        <%=text_field_tag :email, params[:email], class:'form-control', type:'text'%>
+                        <label class="form-label mt-3" for="role_id">Role</label>
+                        <%# <%= select_tag(:role_id, options_for_select(Role.all.collect { |t| [t.name, t.id]}), class:"select form-control")%>
+                        <%= select_tag(:role_id, options_for_select(Role.all.collect { |r| [r.name, r.id] },params[:role_id] ), class:"select form-control") %>
+                        <%# <%=text_field_tag :row, params[:name], class:'form-control', type:'text'%>
+                        <label class="form-label mt-3" for="username">Username</label>
+                        <%=text_field_tag :username, params[:username], class:'form-control', type:'text'%>
+                        <label class="form-label mt-3" for="password">Password</label>
+                        <%=text_field_tag :password, params[:password], class:'form-control', type:'text'%>
+                    </div>
+                    <%= submit_tag("Create", :class=>"btn btn-primary btn-block mb-4 ml-2 col-2", :name=>"submit") %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+</div>

@@ -5,23 +5,41 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header text-right">
-              <button class="btn btn-primary btn-sm">Add Users</button>
+              <%= link_to new_user_path do %>
+                    <button class="btn btn-primary btn-sm">Add Users</button>
+                  <% end %>
             </div>
             <div class="card-body p-0">
               <table class="table table-bordered">
                 <thead>
                   <th>ID</th>
-                  <th>ID</th>
-                  <th>ID</th>
+                  <th>Username</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
                 </thead>
+                
                 <tbody>
-                  <% 6.times do%>
+                  <% if @users%>
+                    <% @users.each do |user|%>
+                      <tr>
+                        <td><%=user.id%></td>
+                        <td><%=user.username%></td>
+                        <td><%=user.first_name%> <%=user.last_name%></td>
+                        <td><%=user.email%></td>
+                        <% if user.role_id%>
+                          <td> <%= Role.all.find { |u| u.id == user.role_id }.name %> </td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                  <% else %>
                     <tr>
-                      <td>asd</td>
-                      <td>asd</td>
-                      <td><button class="btn btn-primary btn-sm">Add Device</button></td>
+                      <td>No records found</td>
                     </tr>
                   <% end %>
+                  
                 </tbody>
               </table>
             </div>
