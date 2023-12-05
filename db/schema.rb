@@ -10,18 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_05_053415) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_05_071407) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "auth_tokens", force: :cascade do |t|
-    t.string "token"
-    t.bigint "user_id"
-    t.datetime "valid_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_auth_tokens_on_user_id"
-  end
 
   create_table "gate_permissions", force: :cascade do |t|
     t.bigint "role_id"
@@ -39,6 +30,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_05_053415) do
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
+    t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,6 +40,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_05_053415) do
     t.string "serial_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_sessions", force: :cascade do |t|
+    t.string "token"
+    t.bigint "user_id"
+    t.datetime "valid_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_sessions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,5 +62,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_05_053415) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "auth_tokens", "users"
+  add_foreign_key "user_sessions", "users"
 end
