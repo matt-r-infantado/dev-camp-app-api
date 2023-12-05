@@ -1,0 +1,79 @@
+<%= render 'shared/header'%>
+<%= render 'shared/sidebar'%>
+<div class="content-wrapper">
+    <section class="content-header">    
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-sm-6">
+                  <h3><%=@role.name%></h3>
+              </div>
+              <div class="col-sm-6">
+                  <ol class="breadcrumb float-sm-right">
+                      <li class="breadcrumb-item"><%=link_to :Dashboard, root_path%></li>
+                      <li class="breadcrumb-item active"><%=link_to :Roles, roles_path%></li>
+                      <li class="breadcrumb-item active"><%=@role.id%></li>
+                  </ol>
+              </div>
+          </div>
+      </div>
+    </section>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+              <div class="card">
+                <div class="card-header"> 
+                  Gate Access
+                </div>
+                <div class="card-body">
+                  <% if @role.gate_permissions.any?%>
+                    <table class="table table-bordered">
+                      <thead>
+                        <th>ID</th>
+                        <th>GATE ID</th>
+                        <th>#</th>
+                      </thead>
+                      <% @role.gate_permissions.each do |pem|%>
+                        <tr>
+                          <td><%=pem.id%></td>
+                          <td><%=pem.gate.name%></td>
+                          <td width="100">
+                            <%=form_tag role_remove_gate_path(@role) do %>
+                              <%= hidden_field_tag :gate_permission_id, pem.id %>
+                              <%= submit_tag("Remove", :class=>"btn btn-danger btn-sm", :name=>"Remove") %>
+                            <% end %>
+                          </td>
+                        </tr>
+                      <% end %>
+                    </table>
+                  <% else %>
+                    <p>No Permission</p>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <% if @gates.any?%>
+              <div class="col-6">
+                <div class="card">
+                  <div class="card-header"> 
+                    Add Access
+                  </div>
+                  <div class="card-body">
+                    <%=form_tag role_add_gate_path(@role) do %>
+                        <div class="input-group mb-3">
+                          <%= select_tag :gate_id, options_for_select(@gates.collect { |r| [r.name, r.id] }), class: "form-control" %>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <%= submit_tag("Sign in", :class=>"btn btn-primary btn-block mb-4", :name=>"submit") %>
+                            </div>
+                        </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>    
+            <% end %>
+        </div>
+      </div>
+    </section>
+</div>
