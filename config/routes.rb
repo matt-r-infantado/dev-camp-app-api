@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :dashboards
   resources :users do 
     post :assign_nfc
+    collection do 
+      post :check_access
+    end
   end
   resources :gates
   resources :roles do 

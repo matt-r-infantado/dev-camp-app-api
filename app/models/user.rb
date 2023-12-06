@@ -2,7 +2,7 @@
 
 class User < ApplicationRecord
 	has_many :user_sessions
-	has_one :role
+	belongs_to :role, optional: true
 	has_many :nfcs
 	has_secure_password
 
