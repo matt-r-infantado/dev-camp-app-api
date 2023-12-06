@@ -14,11 +14,25 @@ class UsersController < ApplicationController
     end
 	end
 
+	def show
+		@user = User.find(params[:id])
+	end
+
 	def create
 		User.create user_params
 		
 		redirect_to users_path
-		# render json: { message: :created }
+	end
+
+	def edit
+		@user = User.find(params[:id])
+	end
+
+	def update
+		@user = User.find(params[:id])
+		if @user.update_columns(**user_update_params)
+			redirect_to users_path
+		end
 	end
 
 	def assign_nfc 
@@ -74,5 +88,9 @@ class UsersController < ApplicationController
 
 	def user_params
 		params.permit( %i[first_name last_name email role_id device_id username password] )
+	end
+
+	def user_update_params
+		params.permit( %i[first_name last_name email role_id device_id username] )
 	end
 end

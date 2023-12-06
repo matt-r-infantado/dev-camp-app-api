@@ -1,5 +1,4 @@
 class Gate < ApplicationRecord
-
   before_create :generate_gate_serial 
 
   private 
