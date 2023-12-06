@@ -4,6 +4,8 @@ class User < ApplicationRecord
 	has_many :user_sessions
 	belongs_to :role, optional: true
 	has_many :nfcs
+	has_many :access_logs
+	
 	has_secure_password
 
 	validates :username, :password, presence: true

@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_05_225412) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_06_013727) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "access_logs", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "gate_id"
+    t.bigint "nfc_id"
+    t.boolean "is_access"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gate_id"], name: "index_access_logs_on_gate_id"
+    t.index ["nfc_id"], name: "index_access_logs_on_nfc_id"
+    t.index ["user_id"], name: "index_access_logs_on_user_id"
+  end
 
   create_table "gate_permissions", force: :cascade do |t|
     t.bigint "role_id"
@@ -73,6 +85,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_05_225412) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "access_logs", "gates"
+  add_foreign_key "access_logs", "nfcs"
+  add_foreign_key "access_logs", "users"
   add_foreign_key "nfcs", "users"
   add_foreign_key "user_sessions", "users"
 end

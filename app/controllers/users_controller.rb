@@ -42,9 +42,15 @@ class UsersController < ApplicationController
 		if gate.nil? || nfc.nil?
 			render json: {message: :denied}, status: 400
 		else
-			access = nfc.user.role.gate_permissions.where(gate_id: gate.id)
-			if access.any? 
-				render json: {message: :access_confirm}
+			if nfc.user.present?
+				access = nfc.user.role.gate_permissions.where(gate_id: gate.id)
+				if access.any? 
+					nfc.user.access_logs.create({nfc_id: nfc.id, gate_id: gate.id, is_access: true})
+					render json: {message: :access_confirm}
+				else
+					nfc.user.access_logs.create({nfc_id: nfc.id, gate_id: gate.id, is_access: false})
+					render json: {message: :denied}, status: 400
+				end
 			else
 				render json: {message: :denied}, status: 400
 			end

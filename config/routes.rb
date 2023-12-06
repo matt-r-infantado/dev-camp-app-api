@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       post :check_access
     end
   end
+  resources :access_logs
   resources :gates
   resources :roles do 
     post :add_gate

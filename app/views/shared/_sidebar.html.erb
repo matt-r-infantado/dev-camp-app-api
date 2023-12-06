@@ -21,7 +21,7 @@
         </li>
         <li class="nav-item has-treeview">
           <%=link_to gates_path, class:(controller_name == 'gates' ? 'nav-link active' : 'nav-link' ) do %>
-            <i class="nav-icon fas fa-building"></i>
+            <i class="nav-icon fas fa-sign-in"></i>
             <p>
               Gates
               <i class="right fas fa-angle-right"></i>
@@ -30,9 +30,19 @@
         </li>
         <li class="nav-item has-treeview">
           <%=link_to roles_path, class:(controller_name == 'roles' ? 'nav-link active' : 'nav-link' ) do %>
-            <i class="nav-icon fas fa-building"></i>
+            <i class="nav-icon fas fa-lock"></i>
             <p>
               Roles
+              <i class="right fas fa-angle-right"></i>
+            </p>
+          <% end %> 
+        </li>
+
+        <li class="nav-item has-treeview">
+          <%=link_to access_logs_path, class:(controller_name == 'access_logs' ? 'nav-link active' : 'nav-link' ) do %>
+            <i class="nav-icon fas fa-history"></i>
+            <p>
+              Access Logs
               <i class="right fas fa-angle-right"></i>
             </p>
           <% end %> 
