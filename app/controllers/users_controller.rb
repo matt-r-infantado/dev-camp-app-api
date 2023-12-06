@@ -91,6 +91,6 @@ class UsersController < ApplicationController
 	end
 
 	def user_update_params
-		params.permit( %i[first_name last_name email role_id device_id username] )
+		params.permit( %i[first_name last_name email role_id device_id username disabled] )
 	end
 end

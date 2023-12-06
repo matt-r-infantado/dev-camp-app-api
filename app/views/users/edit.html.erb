@@ -37,8 +37,12 @@
                   <%# <%=text_field_tag :row, params[:name], class:'form-control', type:'text'%>
                   <label class="form-label mt-3" for="username">Username</label>
                   <%=text_field_tag :username, @user.username, class:'form-control', type:'text'%>
-                  <%# <label class="form-label mt-3" for="password">Password</label>
-                  <%=text_field_tag :password, @user.password, class:'form-control', type:'text'%>
+                  <label class="form-label mt-3" for="password">Disabled</label> 
+                  <div class="checkbox">
+                    <td>
+                      <%= check_box_tag 'disabled', 1,  @user.disabled %>
+                    </td>
+                  </div>
                 </div>
                 <%= submit_tag("Update", :class=>"btn btn-primary btn-block mb-4 ml-2 col-2", :name=>"submit") %>
               <% end %>
