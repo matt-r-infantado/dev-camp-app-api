@@ -37,7 +37,9 @@
                       <% @gates.each do |gate|%>
                         <tr>
                           <td><%=gate.id%></td>
-                          <td><%=gate.name%></td>
+                          <td>
+                            <%= link_to gate.name, gate_path(gate) %>
+                          </td>
                           <td><%=gate.serial_number%></td>
                         </tr>
                       <% end %>

@@ -5,6 +5,12 @@ class GatesController < ApplicationController
     @gates = Gate.all
   end
 
+  def show 
+    @gate = Gate.find(params[:id])
+    qr_code = RQRCode::QRCode.new(@gate.serial_number, size: 4, level: :m)
+    @qr_code_svg = qr_code.as_svg
+  end
+
   def new
   end
 
