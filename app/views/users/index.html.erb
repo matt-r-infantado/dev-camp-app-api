@@ -40,7 +40,11 @@
                 <tbody>
                   <% if @users%>
                     <% @users.each do |user|%>
-                      <tr>
+                      <% if user.disabled %>
+                        <tr class="table-secondary">
+                      <% else %>
+                        <tr>
+                      <% end %>
                         <td><%=user.id%></td>
                         <td><%=user.username%></td>
                         <td><%=user.first_name%> <%=user.last_name%></td>
