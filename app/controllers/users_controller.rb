@@ -45,14 +45,28 @@ class UsersController < ApplicationController
 			if nfc.user.present?
 				access = nfc.user.role.gate_permissions.where(gate_id: gate.id)
 				if access.any? 
+
+					if(gate.name == "Main")
+						main_gates =  nfc.user.access_logs.today.where(gate_id: gate.id)
+						if main_gates.any?
+							if main_gates.count % 2 == 0
+								render json: {message: "logout.mp3"}
+							else
+								render json: {message: "login.mp3"}	
+							end
+						else
+							render json: {message: "login.mp3"}
+						end
+					else
+						render json: {message: "access-confirm.mp3"}
+					end
 					nfc.user.access_logs.create({nfc_id: nfc.id, gate_id: gate.id, is_access: true})
-					render json: {message: :access_confirm}
 				else
 					nfc.user.access_logs.create({nfc_id: nfc.id, gate_id: gate.id, is_access: false})
-					render json: {message: :denied}, status: 400
+					render json: {message: "access-denied.mp3"}, status: 400
 				end
 			else
-				render json: {message: :denied}, status: 400
+				render json: {message: "access-denied.mp3"}, status: 400
 			end
 		end
 	end
