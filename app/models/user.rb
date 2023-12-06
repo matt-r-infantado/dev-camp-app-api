@@ -3,6 +3,7 @@
 class User < ApplicationRecord
 	has_many :user_sessions
 	has_one :role
+	has_many :nfcs
 	has_secure_password
 
 	validates :username, :password, presence: true

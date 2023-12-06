@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root "dashboards#index"
 
   resources :dashboards
-  resources :users
+  resources :users do 
+    post :assign_nfc
+  end
   resources :gates
   resources :roles do 
     post :add_gate

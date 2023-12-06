@@ -1,0 +1,2 @@
+class Nfc < ApplicationRecord
+end
